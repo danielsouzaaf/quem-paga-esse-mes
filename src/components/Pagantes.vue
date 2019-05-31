@@ -11,6 +11,11 @@
       <div class="nes-container with-title is-centered">
         <p class="title">Pagantes do Netflix</p>
         <h2>{{pagante.netflix.name}} - {}</h2>
+        <div class="lists">
+          <ul class="nes-list is-disc">
+            <li v-for="mes in meses">{{mes}}</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div id="spotify" v-else-if="servico === 'spotify'" class="div-streaming">
@@ -54,6 +59,14 @@
   export default {
 
     name: 'Pagantes',
+    props: {
+      meses: {
+        type: Array,
+        default: function () {
+          return meses;
+        }
+      }
+    },
     data () {
       return {
         msg: 'Pagante do mês',
@@ -72,6 +85,10 @@
             mlm: pagadores.mlm,
           },
         },
+        meses: {
+          netflix: mesPagantes.netflix,
+          spotify: mesPagantes.spotify,
+        },
         pagante: {
           netflix: pagadores[mesPagantes.netflix[currentDate.getMonth()]],
           spotify: pagadores[mesPagantes.spotify[currentDate.getMonth()]]
@@ -87,21 +104,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #42b983;
-  }
-
   .div-streaming {
     margin-top: 25px;
   }
