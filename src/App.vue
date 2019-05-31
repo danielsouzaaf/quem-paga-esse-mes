@@ -12,13 +12,12 @@ export default {
   name: 'App',
   components: {
     HelloWorld,
-    Pagantes,
+    Pagantes
   }
 }
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
   #app {
   -webkit-font-smoothing: antialiased;
