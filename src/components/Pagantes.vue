@@ -1,15 +1,23 @@
 <template>
   <div class="pagantes">
-    <select v-model="servico">
-      <option value="netflix">Netflix</option>
-      <option value="spotify">Spotify</option>
-    </select>
-
-    <div id="netflix" v-if="servico === 'netflix'">
-      <h2>{{pagante.netflix.name}} - {}</h2>
+    <div class="nes-select">
+      <select v-model="servico">
+        <option value="netflix">Netflix</option>
+        <option value="spotify">Spotify</option>
+      </select>
     </div>
-    <div id="spotify" v-else-if="servico === 'spotify'">
-      <h2>{{pagante.spotify.name}} - {}</h2>
+
+    <div id="netflix" v-if="servico === 'netflix'" class="div-streaming">
+      <div class="nes-container with-title is-centered">
+        <p class="title">Pagantes do Netflix</p>
+        <h2>{{pagante.netflix.name}} - {}</h2>
+      </div>
+    </div>
+    <div id="spotify" v-else-if="servico === 'spotify'" class="div-streaming">
+      <div class="nes-container with-title is-centered">
+        <p class="title">Pagantes do Spotify</p>
+        <h2>{{pagante.spotify.name}} - {}</h2>
+      </div>
     </div>
   </div>
 </template>
@@ -92,5 +100,9 @@
   }
   a {
     color: #42b983;
+  }
+
+  .div-streaming {
+    margin-top: 25px;
   }
 </style>
