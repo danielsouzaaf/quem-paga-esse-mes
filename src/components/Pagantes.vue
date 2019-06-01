@@ -11,20 +11,43 @@
     </div>
 
     <div id="netflix" v-if="servico === 'netflix'" class="div-streaming">
-      <div class="nes-container with-title is-centered">
+      <div class="bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
+        <div class="sm:flex sm:items-center px-6 py-4">
+          <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" v-bind:src="pagante.netflix.avatar" alt="">
+          <div class="text-center sm:text-left sm:flex-grow">
+            <div class="mb-4">
+              <p class="text-xl leading-tight">{{pagante.netflix.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
         <p class="title">Pagantes do Netflix</p>
-        <h2>{{pagante.netflix.name}} - {}</h2>
         <div class="lists">
           <ul class="nes-list is-disc">
-            <li v-for="mes in meses">{{mes}}</li>
+            <li v-for="(mes, key) in meses" v-bind:class="{ 'font-extrabold': key === mesAtual}">{{mes}} - {{pagantes.netflix[mesesPagantes.netflix[key]].name}}</li>
           </ul>
         </div>
       </div>
     </div>
-    <div id="spotify" v-else-if="servico === 'spotify'" class="div-streaming">
-      <div class="nes-container with-title is-centered">
-        <p class="title">Pagantes do Spotify</p>
-        <h2>{{pagante.spotify.name}} - {}</h2>
+    <div id="spotify" v-if="servico === 'spotify'" class="div-streaming">
+      <div class="bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
+        <div class="sm:flex sm:items-center px-6 py-4">
+          <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" v-bind:src="pagante.spotify.avatar" alt="">
+          <div class="text-center sm:text-left sm:flex-grow">
+            <div class="mb-4">
+              <p class="text-xl leading-tight">{{pagante.spotify.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <p class="title">Pagantes do spotify</p>
+        <div class="lists">
+          <ul class="nes-list is-disc">
+            <li v-for="(mes, key) in meses" v-bind:class="{ 'font-extrabold': key === mesAtual}">{{mes}} - {{pagantes.spotify[mesesPagantes.spotify[key]].name}}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -88,7 +111,7 @@
             mlm: pagadores.mlm,
           },
         },
-        meses: {
+        mesesPagantes: {
           netflix: mesPagantes.netflix,
           spotify: mesPagantes.spotify,
         },
@@ -96,6 +119,7 @@
           netflix: pagadores[mesPagantes.netflix[currentDate.getMonth()]],
           spotify: pagadores[mesPagantes.spotify[currentDate.getMonth()]]
         },
+        mesAtual: currentDate.getMonth(),
         servico: 'netflix',
       }
     },

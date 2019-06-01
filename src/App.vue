@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Pagantes />
+    <div class="container mx-auto">
+      <Pagantes />
+    </div>
   </div>
 </template>
 
