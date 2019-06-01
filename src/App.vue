@@ -7,13 +7,11 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import Pagantes from './components/Pagantes'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Pagantes
   }
 }
