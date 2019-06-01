@@ -38,7 +38,37 @@
       <a href="#" class="cancel"></a>
 
       <div class="modal">
-        <h1>Texto do meu modal aqui</h1>
+        <div class="mb-6">
+          <p class="text-2xl">Como pagar</p>
+        </div>
+        <div class="mb-6">
+          <p class="text-lg">Para pagar basta fazer uma transferência para um desses três bancos: <span class="font-bold">Banco do Brasil, Caixa Econômica Federal ou NuConta</span></p>
+        </div>
+        <div class="mb-6">
+          <p class="text-xl font-bold">Banco do Brasil</p>
+          <p class="text-lg"><span class="font-semibold">Agência</span>: 716-1</p>
+          <p class="text-lg"><span class="font-semibold">Conta</span>: 65254-7</p>
+          <p class="text-lg"><span class="font-semibold">Nome do titular</span>: Daniel Souza Affonso Ferreira</p>
+          <p class="text-lg"><span class="font-semibold">CPF do titular</span>: 117.554.704-28</p>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-xl font-bold">Caixa Econômica Federal</p>
+          <p class="text-lg"><span class="font-semibold">Agência</span>: 1406</p>
+          <p class="text-lg"><span class="font-semibold">Operação</span>: 023</p>
+          <p class="text-lg"><span class="font-semibold">Conta</span>: 2885-0</p>
+          <p class="text-lg"><span class="font-semibold">Nome do titular</span>: Daniel Souza Affonso Ferreira</p>
+          <p class="text-lg"><span class="font-semibold">CPF do titular</span>: 117.554.704-28</p>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-xl font-bold">NuConta</p>
+          <p class="text-lg"><span class="font-semibold">Banco</span>: 260 - Nu Pagamentos S.A.</p>
+          <p class="text-lg"><span class="font-semibold">Agência</span>: 0001</p>
+          <p class="text-lg"><span class="font-semibold">Conta</span>: 3756629-6</p>
+          <p class="text-lg"><span class="font-semibold">Nome do titular</span>: Daniel Souza Affonso Ferreira</p>
+          <p class="text-lg"><span class="font-semibold">CPF do titular</span>: 117.554.704-28</p>
+        </div>
 
         <a href="#" class="close">&times;</a>
       </div>
