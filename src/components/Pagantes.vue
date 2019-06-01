@@ -28,7 +28,7 @@
         <p class="title">Pagantes do {{servico}}</p>
         <div class="lists">
           <ul class="nes-list is-disc">
-            <li v-for="(mes, key) in meses" v-bind:class="{ 'font-extrabold': key === mesAtual}">{{mes}} - {{pagantes[servico][mesesPagantes[servico][key]].name}}</li>
+            <li v-for="(mes, key) in meses" v-bind:key="key" v-bind:class="{ 'font-extrabold': key === mesAtual}">{{mes}} - {{pagantes[servico][mesesPagantes[servico][key]].name}}</li>
           </ul>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <a href="#" class="cancel"></a>
 
       <div class="modal">
-        <h1>Texto do meu modal</h1>
+        <h1>Texto do meu modal aqui</h1>
 
         <a href="#" class="close">&times;</a>
       </div>
@@ -48,79 +48,95 @@
 </template>
 
 <script>
-  import DsaAvatar from '../assets/avatars/dsa.jpg'
-  import MvbAvatar from '../assets/avatars/mvb.jpg'
-  import AksAvatar from '../assets/avatars/aks.jpg'
-  import LfmAvatar from '../assets/avatars/lfm.jpg'
-  import MegAvatar from '../assets/avatars/meg.jpg'
-  import MlmAvatar from '../assets/avatars/mlm.jpg'
-  import BpmAvatar from '../assets/avatars/bpm.jpg'
+import DsaAvatar from '../assets/avatars/dsa.jpg'
+import MvbAvatar from '../assets/avatars/mvb.jpg'
+import AksAvatar from '../assets/avatars/aks.jpg'
+import LfmAvatar from '../assets/avatars/lfm.jpg'
+import MegAvatar from '../assets/avatars/meg.jpg'
+import MlmAvatar from '../assets/avatars/mlm.jpg'
+import BpmAvatar from '../assets/avatars/bpm.jpg'
 
-  const pagadores = {
-    dsa: { name: 'Daniel', avatar: DsaAvatar},
-    mvb: { name: 'Barcos', avatar: MvbAvatar},
-    aks: { name: 'Karol', avatar: AksAvatar},
-    lfm: { name: 'Luís', avatar: LfmAvatar},
-    meg: { name: 'Duda', avatar: MegAvatar},
-    mlm: { name: 'Mari', avatar: MlmAvatar},
-    bpm: { name: 'Bia', avatar: BpmAvatar}
-  }
+const pagadores = {
+  dsa: {
+    name: 'Daniel',
+    avatar: DsaAvatar
+  },
+  mvb: {
+    name: 'Barcos',
+    avatar: MvbAvatar
+  },
+  aks: {
+    name: 'Karol',
+    avatar: AksAvatar},
+  lfm: {
+    name: 'Luís',
+    avatar: LfmAvatar},
+  meg: {
+    name: 'Duda',
+    avatar: MegAvatar},
+  mlm: {
+    name: 'Mari',
+    avatar: MlmAvatar},
+  bpm: {
+    name: 'Bia',
+    avatar: BpmAvatar}
+}
 
-  const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro',
-    'outubro', 'novembro', 'dezembro']
+const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro',
+  'outubro', 'novembro', 'dezembro']
 
-  const mesPagantes = {
-    spotify: ['dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm', 'dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm'],
-    netflix: ['aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm']
-  }
+const mesPagantes = {
+  spotify: ['dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm', 'dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm'],
+  netflix: ['aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm']
+}
 
-  const currentDate = new Date();
+const currentDate = new Date()
 
-  export default {
+export default {
 
-    name: 'Pagantes',
-    props: {
-      meses: {
-        type: Array,
-        default: function () {
-          return meses;
+  name: 'Pagantes',
+  props: {
+    meses: {
+      type: Array,
+      default: function () {
+        return meses
+      }
+    }
+  },
+  data () {
+    return {
+      msg: 'Pagante do mês',
+      pagantes: {
+        netflix: {
+          dsa: pagadores.dsa,
+          aks: pagadores.aks,
+          bpm: pagadores.bpm
+        },
+        spotify: {
+          dsa: pagadores.dsa,
+          mvb: pagadores.mvb,
+          aks: pagadores.aks,
+          lfm: pagadores.lfm,
+          meg: pagadores.meg,
+          mlm: pagadores.mlm
         }
-      }
-    },
-    data () {
-      return {
-        msg: 'Pagante do mês',
-        pagantes: {
-          netflix: {
-            dsa: pagadores.dsa,
-            aks: pagadores.aks,
-            bpm: pagadores.bpm,
-          },
-          spotify: {
-            dsa: pagadores.dsa,
-            mvb: pagadores.mvb,
-            aks: pagadores.aks,
-            lfm: pagadores.lfm,
-            meg: pagadores.meg,
-            mlm: pagadores.mlm,
-          },
-        },
-        mesesPagantes: {
-          netflix: mesPagantes.netflix,
-          spotify: mesPagantes.spotify,
-        },
-        pagante: {
-          netflix: pagadores[mesPagantes.netflix[currentDate.getMonth()]],
-          spotify: pagadores[mesPagantes.spotify[currentDate.getMonth()]]
-        },
-        mesAtual: currentDate.getMonth(),
-        servico: 'netflix',
-      }
-    },
-    computed: {
+      },
+      mesesPagantes: {
+        netflix: mesPagantes.netflix,
+        spotify: mesPagantes.spotify
+      },
+      pagante: {
+        netflix: pagadores[mesPagantes.netflix[currentDate.getMonth()]],
+        spotify: pagadores[mesPagantes.spotify[currentDate.getMonth()]]
+      },
+      mesAtual: currentDate.getMonth(),
+      servico: 'netflix'
+    }
+  },
+  computed: {
 
-    },
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
