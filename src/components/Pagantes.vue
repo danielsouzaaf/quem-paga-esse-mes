@@ -18,6 +18,9 @@
             <div class="mb-4">
               <p class="text-xl leading-tight">{{pagante[servico].name}}</p>
             </div>
+            <a href="#modal-como-pagar" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+              Como pagar?
+            </a>
           </div>
         </div>
       </div>
@@ -30,6 +33,17 @@
         </div>
       </div>
     </div>
+
+    <div class="overlay" id="modal-como-pagar">
+      <a href="#" class="cancel"></a>
+
+      <div class="modal">
+        <h1>Texto do meu modal</h1>
+
+        <a href="#" class="close">&times;</a>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -113,5 +127,39 @@
 <style scoped>
   .div-streaming {
     margin-top: 25px;
+  }
+
+  .overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .7);
+  }
+
+  .overlay:target {
+    visibility: visible;
+  }
+
+  .modal {
+    position: relative;
+    width: 600px;
+    max-width: 80%;
+    background: white;
+    border-radius: 8px;
+    padding: 1em 2em;
+  }
+
+  .modal .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: grey;
+    text-decoration: none;
   }
 </style>
