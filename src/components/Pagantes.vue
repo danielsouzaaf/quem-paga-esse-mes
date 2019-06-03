@@ -49,7 +49,6 @@
           <p class="text-lg"><span class="font-semibold">Agência</span>: 716-1</p>
           <p class="text-lg"><span class="font-semibold">Conta</span>: 65254-7</p>
           <p class="text-lg"><span class="font-semibold">Nome do titular</span>: Daniel Souza Affonso Ferreira</p>
-          <p class="text-lg"><span class="font-semibold">CPF do titular</span>: 117.554.704-28</p>
         </div>
 
         <div class="mb-6">
@@ -58,16 +57,12 @@
           <p class="text-lg"><span class="font-semibold">Operação</span>: 023</p>
           <p class="text-lg"><span class="font-semibold">Conta</span>: 2885-0</p>
           <p class="text-lg"><span class="font-semibold">Nome do titular</span>: Daniel Souza Affonso Ferreira</p>
-          <p class="text-lg"><span class="font-semibold">CPF do titular</span>: 117.554.704-28</p>
         </div>
 
         <div class="mb-6">
           <p class="text-xl font-bold">NuConta</p>
-          <p class="text-lg"><span class="font-semibold">Banco</span>: 260 - Nu Pagamentos S.A.</p>
-          <p class="text-lg"><span class="font-semibold">Agência</span>: 0001</p>
-          <p class="text-lg"><span class="font-semibold">Conta</span>: 3756629-6</p>
-          <p class="text-lg"><span class="font-semibold">Nome do titular</span>: Daniel Souza Affonso Ferreira</p>
-          <p class="text-lg"><span class="font-semibold">CPF do titular</span>: 117.554.704-28</p>
+          <a href="https://nubank.com.br/pagar/28imt/riur0vhpNG"><p class="text-lg text-blue-600"><span class="font-semibold">Spotify</span></p></a>
+          <a href="https://nubank.com.br/pagar/28imt/k0Xn0XYhv5"><p class="text-lg text-blue-600"><span class="font-semibold">Netflix</span></p></a>
         </div>
 
         <a href="#" class="close">&times;</a>
