@@ -80,6 +80,7 @@ import LfmAvatar from '../assets/avatars/lfm.jpg'
 import MegAvatar from '../assets/avatars/meg.jpg'
 import MlmAvatar from '../assets/avatars/mlm.jpg'
 import BpmAvatar from '../assets/avatars/bpm.jpg'
+import JmpAvatar from '../assets/avatars/jmp.jpg'
 
 const pagadores = {
   dsa: {
@@ -104,7 +105,10 @@ const pagadores = {
     avatar: MlmAvatar},
   bpm: {
     name: 'Bia',
-    avatar: BpmAvatar}
+    avatar: BpmAvatar},
+  jmp: {
+    name: 'Jonas',
+    avatar: JmpAvatar}
 }
 
 const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro',
@@ -112,7 +116,7 @@ const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julh
 
 const mesPagantes = {
   spotify: ['dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm', 'dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm'],
-  netflix: ['aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm', 'aks', 'dsa', 'bpm']
+  netflix: ['dsa', 'bpm', 'aks', 'jmp', 'dsa', 'bpm', 'aks', 'jmp', 'dsa', 'bpm', 'aks', 'jmp']
 }
 
 const currentDate = new Date()
@@ -135,7 +139,8 @@ export default {
         netflix: {
           dsa: pagadores.dsa,
           aks: pagadores.aks,
-          bpm: pagadores.bpm
+          bpm: pagadores.bpm,
+          jmp: pagadores.jmp
         },
         spotify: {
           dsa: pagadores.dsa,
