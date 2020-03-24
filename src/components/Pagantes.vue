@@ -2,8 +2,7 @@
   <div class="pagantes">
     <div class="inline-block relative w-64 mt-5">
       <select v-model="servico" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option value="netflix">Netflix</option>
-        <option value="spotify">Spotify</option>
+        <option v-for="(s, key) in servicos" :key="key" :value="s.toLowerCase()">{{ s }}</option>
       </select>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -13,7 +12,7 @@
     <div class="div-streaming">
       <div class="bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
         <div class="sm:flex sm:items-center px-6 py-4">
-          <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" v-bind:src="pagante[servico].avatar" alt="">
+          <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" :src="pagante[servico].avatar" alt="">
           <div class="text-center sm:text-left sm:flex-grow">
             <div class="mb-4">
               <p class="text-xl leading-tight">{{pagante[servico].name}}</p>
@@ -63,6 +62,7 @@
           <p class="text-xl font-bold">NuConta</p>
           <a href="https://nubank.com.br/pagar/28imt/riur0vhpNG"><p class="text-lg text-blue-600"><span class="font-semibold">Spotify</span></p></a>
           <a href="https://nubank.com.br/pagar/28imt/k0Xn0XYhv5"><p class="text-lg text-blue-600"><span class="font-semibold">Netflix</span></p></a>
+          <a href="https://nubank.com.br/pagar/28imt/LJKNFe35yi"><p class="text-lg text-blue-600"><span class="font-semibold">Globoplay</span></p></a>
         </div>
 
         <a href="#" class="close">&times;</a>
@@ -73,50 +73,15 @@
 </template>
 
 <script>
-import DsaAvatar from '../assets/avatars/dsa.jpg'
-import MvbAvatar from '../assets/avatars/mvb.jpg'
-import AksAvatar from '../assets/avatars/aks.jpg'
-import LfmAvatar from '../assets/avatars/lfm.jpg'
-import MegAvatar from '../assets/avatars/meg.jpg'
-import MlmAvatar from '../assets/avatars/mlm.jpg'
-import BpmAvatar from '../assets/avatars/bpm.jpg'
-import JmpAvatar from '../assets/avatars/jmp.jpg'
-
-const pagadores = {
-  dsa: {
-    name: 'Daniel',
-    avatar: DsaAvatar
-  },
-  mvb: {
-    name: 'Barcos',
-    avatar: MvbAvatar
-  },
-  aks: {
-    name: 'Karol',
-    avatar: AksAvatar},
-  lfm: {
-    name: 'Luís',
-    avatar: LfmAvatar},
-  meg: {
-    name: 'Duda',
-    avatar: MegAvatar},
-  mlm: {
-    name: 'Mari',
-    avatar: MlmAvatar},
-  bpm: {
-    name: 'Bia',
-    avatar: BpmAvatar},
-  jmp: {
-    name: 'Jonas',
-    avatar: JmpAvatar}
-}
+import pagadores from '../assets/pagadores'
 
 const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro',
   'outubro', 'novembro', 'dezembro']
 
 const mesPagantes = {
   spotify: ['dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm', 'dsa', 'mvb', 'aks', 'lfm', 'meg', 'mlm'],
-  netflix: ['dsa', 'bpm', 'aks', 'jmp', 'dsa', 'bpm', 'aks', 'jmp', 'dsa', 'bpm', 'aks', 'jmp']
+  netflix: ['dsa', 'bpm', 'aks', 'jmp', 'dsa', 'bpm', 'aks', 'jmp', 'dsa', 'bpm', 'aks', 'jmp'],
+  globoplay: ['dsa', 'dsa', 'dsa', 'knr', 'bpm', 'lgc', 'glg', 'dsa', 'knr', 'bpm', 'lgc', 'glg']
 }
 
 const currentDate = new Date()
@@ -149,18 +114,28 @@ export default {
           lfm: pagadores.lfm,
           meg: pagadores.meg,
           mlm: pagadores.mlm
+        },
+        globoplay: {
+          dsa: pagadores.dsa,
+          bpm: pagadores.bpm,
+          knr: pagadores.knr,
+          lgc: pagadores.lgc,
+          glg: pagadores.glg
         }
       },
       mesesPagantes: {
         netflix: mesPagantes.netflix,
-        spotify: mesPagantes.spotify
+        spotify: mesPagantes.spotify,
+        globoplay: mesPagantes.globoplay
       },
       pagante: {
         netflix: pagadores[mesPagantes.netflix[currentDate.getMonth()]],
-        spotify: pagadores[mesPagantes.spotify[currentDate.getMonth()]]
+        spotify: pagadores[mesPagantes.spotify[currentDate.getMonth()]],
+        globoplay: pagadores[mesPagantes.globoplay[currentDate.getMonth()]]
       },
       mesAtual: currentDate.getMonth(),
-      servico: 'netflix'
+      servico: 'netflix',
+      servicos: ['Netflix', 'Spotify', 'Globoplay']
     }
   },
   computed: {
